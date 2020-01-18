@@ -1,11 +1,14 @@
 import React from 'react';
 
-function App() {
-  return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <>
+        <label htmlFor="bar">bar</label>
+        <input type="text" onClick={() => {console.log("Hi!")}} />
+      </>
+    );  
+  }
 }
 
 export default App;
