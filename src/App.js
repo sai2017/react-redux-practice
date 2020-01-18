@@ -1,42 +1,30 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import { setState } from 'expect/build/jestMatchersObject';
 
-// class App extends React.Component {
-//   render() {
-//     return (
-//       <>
-//         <label htmlFor="bar">bar</label>
-//         <input type="text" onClick={() => {console.log("Hi!")}} />
-//       </>
-//     );  
-//   }
-// }
+const App = () => (<Counter />)
 
-const App = () => {
-  const users = [
-    {name: "Sai", age: 29},
-    {name: "Taro", age: 23},
-    {name: "Onoda", age: 16},
-    {name: "Kitayama", age: 22}
-  ];
-  return (
-    <div>
-      {users.map((user, index) => {
-        return <User name={user.name} age={user.age} key={index} />
-      })}
-    </div>
-  )
-}
 
-const User = (props) => {
-  return (
-    <div>Hi! I am {props.name} and {props.age} yaers old.</div>
-  )
-}
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 }
+  }
+  handleClickPlus() {
+    this.setState({count: this.state.count + 1});
+  }
 
-User.propTypes = {
-  name: propTypes.string,
-  age: propTypes.number.isRequired
+  handleClickMinus() {
+    this.setState({count: this.state.count -1 });
+  }
+  render() {
+    return (
+      <>
+        <div>counter: {this.state.count}</div>
+        <button onClick={() => {this.handleClickPlus()}}>+1</button>
+        <button onClick={() => {this.handleClickMinus()}}>-1</button>
+      </>
+    )
+  }
 }
 
 export default App;
