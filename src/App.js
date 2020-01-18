@@ -12,20 +12,29 @@ import React from 'react';
 // }
 
 const App = () => {
+  const users = [
+    {name: "Sai", age: 29},
+    {name: "Taro", age: 23},
+    {name: "Onoda", age: 16},
+    {name: "Kitayama"}
+  ];
   return (
     <div>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
+      {users.map((user, index) => {
+        return <User name={user.name} age={user.age} key={index} />
+      })}
     </div>
   )
 }
 
-const Cat = () => {
+const User = (props) => {
   return (
-    <div>wow!</div>
+    <div>Hi! I am {props.name} and {props.age} yaers old.</div>
   )
+}
+
+User.defaultProps = {
+  age: 1
 }
 
 export default App;
